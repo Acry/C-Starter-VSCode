@@ -6,7 +6,7 @@
 #define P2 2
 
 void cleanBoard(int[]);
-int checkBoard(int[]);
+
 int boardIsFull(int[]);
 int checkInput(int, int[], int);
 
@@ -19,45 +19,11 @@ void drawBoard(int[]);
 
 int main()
 {
-    // init game
-    // clean fields
     int board[9];
     cleanBoard(board);
-    // board[0] = P1;
-    // board[8] = P2;
-    // drawBoard(board);
-    int sum = checkBoard(board);
-    int isFull = boardIsFull(board);
-
     int gameRunning = 1;
     int winner = UNSET;
     int player = P1;
-    // board[0] = P1;
-    // board[1] = P1;
-    // board[2] = P1;
-    // winner = checkH(board);
-
-    // board[2] = P2;
-    // board[5] = P2;
-    // board[8] = P2;
-    // winner = checkV(board);
-
-    // board[0] = P1;
-    // board[4] = P1;
-    // board[8] = P1;
-    // winner = checkWin(board);
-
-    // board[0] = P1;
-    // board[1] = P2;
-    // board[2] = P1;
-    // board[3] = P2;
-    // board[4] = P2;
-    // board[5] = P1;
-    // board[6] = P1;
-    // board[7] = P1;
-    // board[8] = P2;
-
-    // isFull = checkBoardIsFull(board);
 
     while (gameRunning)
     {
@@ -69,6 +35,7 @@ int main()
         scanf("%d", &key);
 
         int playerMadeMove = checkInput(key, board, player);
+
         winner = checkWin(board);
         if (winner)
         {
@@ -82,9 +49,10 @@ int main()
         {
             gameRunning = 0;
             drawBoard(board);
-            printf("The game is a draw\n");
+            printf("The game is a draw.\n");
             continue;
         }
+
         if (playerMadeMove)
         {
             player = player == P1 ? P2 : P1;
@@ -100,16 +68,6 @@ void cleanBoard(int theArray[])
     {
         theArray[i] = UNSET;
     }
-}
-
-int checkBoard(int theArray[])
-{
-    int sum = 0;
-    for (int i = 0; i < 9; i++)
-    {
-        sum += theArray[i];
-    }
-    return sum;
 }
 
 int boardIsFull(int theArray[])
