@@ -6,6 +6,8 @@
 
 void cleanBoard(int[]);
 int checkBoard(int[]);
+
+int checkWin(int[]);
 int checkH(int[]);
 int checkV(int[]);
 int checkD(int[]);
@@ -33,7 +35,7 @@ int main()
     board[0] = P1;
     board[4] = P1;
     board[8] = P1;
-    winner = checkD(board);
+    winner = checkWin(board);
     // which player is playing? p1
 
     // check if board is full
@@ -70,6 +72,21 @@ int checkBoard(int theArray[])
         sum += theArray[i];
     }
     return sum;
+}
+
+int checkWin(int theArray[])
+{
+    int h = checkH(theArray);
+    int v = checkV(theArray);
+    int d = checkD(theArray);
+
+    if (h)
+        return h;
+    if (v)
+        return v;
+    if (d)
+        return d;
+    return UNSET;
 }
 
 int checkH(int theArray[])
