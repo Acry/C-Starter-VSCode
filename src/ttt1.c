@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 #define UNSET 0
 #define P1 1
@@ -13,14 +14,19 @@ int checkH(int[]);
 int checkV(int[]);
 int checkD(int[]);
 
+void drawBoard(int[]);
+
 int main()
 {
     // init game
     // clean fields
     int board[9];
     cleanBoard(board);
+    // board[0] = P1;
+    // board[8] = P2;
+    // drawBoard(board);
     int sum = checkBoard(board);
-    int isFull = checkBoardIsFull(board);
+    int isFull = boardIsFull(board);
 
     int gameRunning = 1;
     int winner = UNSET;
@@ -40,33 +46,35 @@ int main()
     // board[8] = P1;
     // winner = checkWin(board);
 
-    // board[0] = P1;
-    // board[1] = P1;
-    // board[2] = P1;
-    // board[3] = P1;
-    // board[4] = P1;
-    // board[5] = P1;
-    // board[6] = P1;
-    // board[7] = P1;
-    // board[8] = P1;
+    board[0] = P1;
+    board[1] = P2;
+    board[2] = P1;
+    board[3] = P2;
+    board[4] = P2;
+    board[5] = P1;
+    board[6] = P1;
+    board[7] = P1;
+    board[8] = P2;
+
     // isFull = checkBoardIsFull(board);
 
     while (gameRunning)
     {
-        // draw board
+        drawBoard(board);
+
         // get player input
 
         winner = checkWin(board);
-        if (checkWin)
+        if (winner)
         {
-
+            printf("The winner is player %d.\n", winner);
             gameRunning = 0;
             continue;
         }
 
         if (boardIsFull(board))
         {
-            // if winner is not set the game is a draw
+            printf("The game is a draw\n");
             gameRunning = 0;
         }
     }
@@ -205,4 +213,29 @@ int checkD(int theArray[])
     }
 
     return winner;
+}
+
+void drawBoard(int theArray[])
+{
+    int board[9];
+    for (int i = 0; i < 9; i++)
+    {
+        char c = i + 49;
+        if (theArray[i] == P1)
+        {
+            c = 'X';
+        }
+        else if (theArray[i] == P2)
+        {
+            c = 'O';
+        }
+        board[i] = c;
+    }
+    printf("\n\n");
+    printf(" %c | %c | %c\n", board[0], board[1], board[2]);
+    printf("-----------\n");
+    printf(" %c | %c | %c\n", board[3], board[4], board[5]);
+    printf("-----------\n");
+    printf(" %c | %c | %c\n", board[6], board[7], board[8]);
+    printf("\n");
 }
