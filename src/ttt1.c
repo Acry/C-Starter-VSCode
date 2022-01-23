@@ -6,6 +6,7 @@
 
 void cleanBoard(int[]);
 int checkBoard(int[]);
+int boardIsFull(int[]);
 
 int checkWin(int[]);
 int checkH(int[]);
@@ -19,9 +20,11 @@ int main()
     int board[9];
     cleanBoard(board);
     int sum = checkBoard(board);
+    int isFull = checkBoardIsFull(board);
+
     int gameRunning = 1;
     int winner = UNSET;
-
+    int player = P1;
     // board[0] = P1;
     // board[1] = P1;
     // board[2] = P1;
@@ -32,25 +35,40 @@ int main()
     // board[8] = P2;
     // winner = checkV(board);
 
-    board[0] = P1;
-    board[4] = P1;
-    board[8] = P1;
-    winner = checkWin(board);
-    // which player is playing? p1
+    // board[0] = P1;
+    // board[4] = P1;
+    // board[8] = P1;
+    // winner = checkWin(board);
 
-    // check if board is full
-    if (board[0] != UNSET && board[1] != UNSET)
+    // board[0] = P1;
+    // board[1] = P1;
+    // board[2] = P1;
+    // board[3] = P1;
+    // board[4] = P1;
+    // board[5] = P1;
+    // board[6] = P1;
+    // board[7] = P1;
+    // board[8] = P1;
+    // isFull = checkBoardIsFull(board);
+
+    while (gameRunning)
     {
-        if (board[0] == P1 && board[1] == P1)
+        // draw board
+        // get player input
+
+        winner = checkWin(board);
+        if (checkWin)
         {
-            winner = P1;
+
+            gameRunning = 0;
+            continue;
         }
-        else if (board[0] == P2 && board[1] == P2)
+
+        if (boardIsFull(board))
         {
-            winner = P2;
-        };
-        // if winner is not set the game is a draw
-        gameRunning = 0;
+            // if winner is not set the game is a draw
+            gameRunning = 0;
+        }
     }
 
     return EXIT_SUCCESS;
@@ -72,6 +90,18 @@ int checkBoard(int theArray[])
         sum += theArray[i];
     }
     return sum;
+}
+
+int boardIsFull(int theArray[])
+{
+    int isFull = 1;
+    for (int i = 0; i < 9; i++)
+    {
+        isFull = theArray[i];
+        if (!isFull)
+            break;
+    }
+    return isFull;
 }
 
 int checkWin(int theArray[])
