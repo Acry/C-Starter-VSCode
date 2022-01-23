@@ -8,6 +8,7 @@
 void cleanBoard(int[]);
 int checkBoard(int[]);
 int boardIsFull(int[]);
+int checkInput(int, int[], int);
 
 int checkWin(int[]);
 int checkH(int[]);
@@ -46,15 +47,15 @@ int main()
     // board[8] = P1;
     // winner = checkWin(board);
 
-    board[0] = P1;
-    board[1] = P2;
-    board[2] = P1;
-    board[3] = P2;
-    board[4] = P2;
-    board[5] = P1;
-    board[6] = P1;
-    board[7] = P1;
-    board[8] = P2;
+    // board[0] = P1;
+    // board[1] = P2;
+    // board[2] = P1;
+    // board[3] = P2;
+    // board[4] = P2;
+    // board[5] = P1;
+    // board[6] = P1;
+    // board[7] = P1;
+    // board[8] = P2;
 
     // isFull = checkBoardIsFull(board);
 
@@ -63,19 +64,30 @@ int main()
         drawBoard(board);
 
         // get player input
+        printf("Player %d choose a field: ", player);
+        int key;
+        scanf("%d", &key);
 
+        int playerMadeMove = checkInput(key, board, player);
         winner = checkWin(board);
         if (winner)
         {
-            printf("The winner is player %d.\n", winner);
             gameRunning = 0;
+            drawBoard(board);
+            printf("The winner is player %d.\n", winner);
             continue;
         }
 
         if (boardIsFull(board))
         {
-            printf("The game is a draw\n");
             gameRunning = 0;
+            drawBoard(board);
+            printf("The game is a draw\n");
+            continue;
+        }
+        if (playerMadeMove)
+        {
+            player = player == P1 ? P2 : P1;
         }
     }
 
@@ -231,11 +243,34 @@ void drawBoard(int theArray[])
         }
         board[i] = c;
     }
-    printf("\n\n");
+    printf("\n");
     printf(" %c | %c | %c\n", board[0], board[1], board[2]);
     printf("-----------\n");
     printf(" %c | %c | %c\n", board[3], board[4], board[5]);
     printf("-----------\n");
     printf(" %c | %c | %c\n", board[6], board[7], board[8]);
     printf("\n");
+}
+
+int checkInput(int key, int theArray[], int player)
+{
+    for (int i = 0; i < 9; i++)
+    {
+        char c = i + 1;
+        if (theArray[i] == P1)
+        {
+            c = 'X';
+        }
+        else if (theArray[i] == P2)
+        {
+            c = 'O';
+        }
+        if (key == c)
+        {
+            theArray[i] = player;
+            return 1;
+        }
+    }
+    printf("No valid field\n");
+    return 0;
 }
