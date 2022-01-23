@@ -13,7 +13,7 @@ LD_FLAGS    = -lm
 SRC_DIR	    = src/
 BUILD_DIR    = dest/
 
-TARGETS     = second recursion
+TARGETS     = second recursion ttt1
 
 .PHONY: all
 all: $(TARGETS)
