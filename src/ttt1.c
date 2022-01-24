@@ -49,26 +49,24 @@ int main()
         scanf("%d", &key);
 
         int playerMadeMove = checkInput(key, board, player);
-
-        winner = checkWin(board);
-        if (winner)
-        {
-            gameRunning = 0;
-            drawBoard(board);
-            printf("The winner is player %d.\n", winner);
-            continue;
-        }
-
-        if (boardIsFull(board))
-        {
-            gameRunning = 0;
-            drawBoard(board);
-            printf("The game is a draw.\n");
-            continue;
-        }
-
         if (playerMadeMove)
         {
+            winner = checkWin(board);
+            if (winner)
+            {
+                gameRunning = 0;
+                drawBoard(board);
+                printf("The winner is player %d.\n", winner);
+                continue;
+            }
+
+            if (boardIsFull(board))
+            {
+                gameRunning = 0;
+                drawBoard(board);
+                printf("The game is a draw.\n");
+                continue;
+            }
             player = player == P1 ? P2 : P1;
         }
     }
