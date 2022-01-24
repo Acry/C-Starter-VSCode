@@ -5,15 +5,29 @@
 #define P1 1
 #define P2 2
 
-void cleanBoard(int[]);
+/**
+ * Yet another Tic-Tac-Toe implementation.
+ *
+ * possible forks:
+ * -> tiny TTT 2 Bytes
+ * -> ncurses TTT
+ * -> TTT with AI
+ * -> TTT ncurses with mouse
+ * -> SDL2 TTT
+ * -> SDL2 Rust
+ * -> SDL2 Go
+ * -> SDL2 Vala
+ */
 
-int boardIsFull(int[]);
-int checkInput(int, int[], int);
+void cleanBoard(int[]); // sets array to all UNSET
 
-int checkWin(int[]);
-int checkH(int[]);
-int checkV(int[]);
-int checkD(int[]);
+int boardIsFull(int[]);          // checks if the board has any UNSET values - probably a better fn name
+int checkInput(int, int[], int); // code smell, bc it checks and sets the key
+
+int checkWin(int[]); // checks if there is a winner - parent function
+int checkH(int[]);   // horizontal win check - nested / child function
+int checkV(int[]);   // vertical win check - nested / child function
+int checkD(int[]);   // diagonal win check - nested / child function
 
 void drawBoard(int[]);
 
