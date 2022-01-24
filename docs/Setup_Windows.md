@@ -1,5 +1,16 @@
 # Installing C on Windows
 
+## Problems
+
+C in special and C++ are still problematic on Windows.
+
+Git BASH https://gitforwindows.org/ and MYSYS2 are not related.
+
+The ms-vscode.cpptools is under heavy development.
+
+In VSCode a developer spends a lot of time to work on the toolchain.
+Debugging often crashes.
+
 ## VSCode Extensions
 
 ms-vscode.cpptools - C/C++ IntelliSense, debugging, and code browsing.
@@ -50,3 +61,7 @@ settings.json
 ## MinGW
 
 Set Path for MinGW, usually ends with `bin`.
+
+## A C-Course on Windows
+
+https://www.udemy.com/course/c-programming-in-windows/learn/lecture/17288232?start=0#overview

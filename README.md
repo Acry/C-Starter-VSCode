@@ -1,54 +1,28 @@
-# C GOTO
+# C Starter
 
-Simple C kickoff for VSCode
+**Work in progress**
 
-C is a general-purpose, procedural, compiled programming language with a static, weak type system.
+C kickoff with VSCode
+
+C is a system programming, procedural, compiled programming language with a static, weak type system.
 
 ## Installing C on Windows
 
-### https://www.msys2.org/
-
-###
-
-https://www.udemy.com/course/c-programming-in-windows/learn/lecture/17288232?start=0#overview
+[Setup on Windows](docs/Setup_Windows.md)
 
 ## Installing C on Arch-Linux
 
 You can use C with different Compilers, Linkers and Build-Systems.
 
-Here I will go with the GNU tool-chain.
+Here I will go with the GNU tool-chain for learning reasons.
 
 Compiler: GNU Compiler-Collection:  
 `pacman -S gcc`
 
-C uses a preprocessor which comes with GCC.
-
 The GNU linker and GNU Assembler:  
 `pacman -S binutils`
 
-`ld` & `as`
-
-more programs from the package `binutils`:
-```shell
-addr2line
-ar
-as
-c++filt
-dwp
-elfedit
-gprof
-ld
-ld.bfd
-ld.gold
-nm
-objcopy
-objdump
-ranlib
-readelf
-size
-strings
-strip
-```
+`ld` & `as` are the linker and assembler.
 
 The GNU Build-System  
 `pacman -S make`
@@ -58,8 +32,8 @@ The GNU Debugger
 
 ## VSCode integration
 
-    ms-vscode.cpptools
-
+Extension:
+    `ms-vscode.cpptools`
 
 ## Hello World
 
@@ -130,16 +104,17 @@ clean:
 ## Projects
 
 We don't use any scaffolding tools here.
-You can write your own with Bash.
+You can write your own with Bash or Python.
 
 ## Dependencies
 
 In C runtime dependencies are usually called libraries.
 
-During design time they are included with `#include $some_header.h`
+During design time they are included with:
 
 ```c
-#include <stdio.h>
+#include "$some_header.h" // local header
+#include <stdio.h> // system header
 ```
 
 `#include` is a preprocessor directive.
@@ -152,17 +127,10 @@ ldd
 
 ## use the dependency
 
-```rust
-use rand::Rng;
-
-    const pseudo_rand = rand::thread_rng().gen_range(1..11);
-    println!("Pseudo-Rand: {}", pseudo_rand);
-```
 
 ## preprocessor directives
 
-https://developerinsider.co/preprocessor-directives-c-programming/#:~:text=The%20C%20preprocessor%20is%20a,are%20executed%20before%20compilation.).
-
+https://developerinsider.co/preprocessor-directives-c-programming/
 
 #include
 #define
@@ -335,12 +303,5 @@ while number != 0 {
 
 ## Advanced Tool-Chain
 
+[Toolchain](docs/Toolchain.md)
 ## References
-
-https://wiki.archlinux.org/index.php/rust
-
-https://www.rust-lang.org/
-
-https://doc.rust-lang.org/book/ch01-00-getting-started.html
-
-https://doc.rust-lang.org/reference/
