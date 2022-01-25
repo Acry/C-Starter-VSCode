@@ -13,7 +13,7 @@ LD_FLAGS    = -lm
 SRC_DIR	    = src/
 BUILD_DIR    = dest/
 
-TARGETS     = second recursion ttt1
+TARGETS     = second recursion ttt1 types
 
 .PHONY: all
 all: $(TARGETS)
@@ -26,6 +26,10 @@ recursion:   $(SRC_DIR)recursion.c
 
 ttt1:   $(SRC_DIR)ttt1.c
 	@cc $(C_FLAGS) -o $(BUILD_DIR)$@ $< $(LD_FLAGS)
+
+types:   $(SRC_DIR)types.c
+	@cc $(C_FLAGS) -o $(BUILD_DIR)$@ $< $(LD_FLAGS)
+
 # hot compile
 # while inotifywait -e close_write ./code.c; do date +%X; make > /dev/null; done
 
